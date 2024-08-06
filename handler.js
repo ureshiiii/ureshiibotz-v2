@@ -467,7 +467,7 @@ export async function handler(chatUpdate) {
                             title: '✘ AKSES DITOLAK', body: wm, sourceUrl: link.web, thumbnail: fs.readFileSync('./media/denied.jpg')
                             }
                         }
-                    })	
+                  })	
                     continue
                 }
                 let extra = {
@@ -640,7 +640,7 @@ let lea = 'https://telegra.ph/file/919591feb232790a9f4c9.jpg'
                     if (chat.detect)
                         this.sendMessage(id, {
                         text, mentions: this.parseMention(text)
-                        }, fakes)
+                        }, m)
                     break
         }
 }
@@ -662,7 +662,7 @@ export async function groupsUpdate(groupsUpdate) {
         if (groupUpdate.icon) text = (chats.sIcon || this.sIcon || conn.sIcon || '```Icon has been changed to```').replace('@icon', groupUpdate.icon)
         if (groupUpdate.revoke) text = (chats.sRevoke || this.sRevoke || conn.sRevoke || '```Group link has been changed to```\n@revoke').replace('@revoke', groupUpdate.revoke)
         if (!text) continue
-        await this.sendMessage(id, { text, mentions: this.parseMention(text) }, fakes)
+        await this.sendMessage(id, { text, mentions: this.parseMention(text) }, m)
     }
 }
 
@@ -705,7 +705,7 @@ global.dfail = (type, m, conn) => {
     restrict: 'ꜰɪᴛᴜʀ ɪɴɪ ᴛɪᴅᴀᴋ ᴅᴀᴘᴀᴛ ᴅɪɢᴜɴᴀᴋᴀɴ !!'
   }[type]
 
-  if (msg) return conn.reply(m.chat, msg, fakes)
+  if (msg) return conn.reply(m.chat, msg, m)
   let msgg = {
     unreg: `⛩️ *Registrasi Diperlukan* \n–“🍁”𝙷𝚊𝚛𝚊𝚙 𝚁𝚎𝚐𝚒𝚜𝚝𝚛𝚊𝚜𝚒 𝚃𝚎𝚛𝚕𝚎𝚋𝚒𝚑 𝙳𝚊𝚑𝚞𝚕𝚞 𝚄𝚗𝚝𝚞𝚔 𝙳𝚊𝚙𝚊𝚝 𝙼𝚎𝚗𝚐𝚐𝚞𝚗𝚊𝚔𝚊𝚗 𝙵𝚒𝚝𝚞𝚛 𝚄𝚛𝚎𝚜𝚑𝚒𝚒𝙱𝚘𝚝𝚣.\n\n☁️ *Cara registrasi:* \n.𝚍𝚊𝚏𝚝𝚊𝚛𝚗𝚊𝚖𝚊.𝚞𝚖𝚞𝚛\n\n☁️ *Contoh:* \n.𝚍𝚊𝚏𝚝𝚊𝚛𝙵𝚊𝚛𝚑𝚊𝚗𝚗.20`
   }[type]
@@ -776,4 +776,4 @@ if (time >= 18) {
 res = "Selamat Malam"
 }
 return res
-}
+}               
