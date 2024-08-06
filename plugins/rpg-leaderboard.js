@@ -43,8 +43,7 @@ mediaType: 1,
 renderLargerThumbnail: true
 }}}, { mentions: [...usersExp.slice(0, len), ...usersMoney.slice(0, len), ...usersLevel.slice(0, len)].filter(v => !participants.some(p => areJidsSameUser(v, p.id) )) }, { quoted: m })
 }
-  
-}
+
 handler.help = ['leaderboard']
 handler.tags = ['rpg']
 handler.command = ['leaderboard', 'lb'] 
