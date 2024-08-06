@@ -38,11 +38,12 @@ import { JSONFile } from "lowdb/node"
 import storeSys from './lib/store2.js'
 const store = storeSys.makeInMemoryStore()
 const {
-    fetchLatestBaileysVersion,
-	useMultiFileAuthState, 
+    useMultiFileAuthState,
     DisconnectReason,
+    fetchLatestBaileysVersion, 
+    makeInMemoryStore, 
     makeCacheableSignalKeyStore, 
-    PHONENUMBER_MCC,
+    PHONENUMBER_MCC
 } = await import('@adiwajshing/baileys')
 
 const { CONNECTING } = ws
@@ -153,15 +154,15 @@ if(usePairingCode && !conn.authState.creds.registered) {
 		const { registration } = { registration: {} }
 		let phoneNumber = ''
 		do {
-			phoneNumber = await question(chalk.blueBright('Masukan nomor telepon aktif yang mau jadi bot. Contoh : 62xxx:\n'))
+			phoneNumber = await question(chalk.blueBright('Masukan Nomor 62---\n'))
 		} while (!Object.keys(PHONENUMBER_MCC).some(v => phoneNumber.startsWith(v)))
 		rl.close()
 		phoneNumber = phoneNumber.replace(/\D/g,'')
-		console.log(chalk.bgWhite(chalk.blue('Proses — UreshiiBotz 2.0')))
+		console.log(chalk.bgWhite(chalk.blue('Proses..')))
 		setTimeout(async () => {
 			let code = await conn.requestPairingCode(phoneNumber)
 			code = code?.match(/.{1,4}/g)?.join('-') || code
-			console.log(chalk.black(chalk.bgGreen(`Code Pairing Kamu : `)), chalk.black(chalk.white(code)))
+			console.log(chalk.black(chalk.bgGreen(`Code Km :`)), chalk.black(chalk.white(code)))
 		}, 3000)
 }
 
@@ -378,3 +379,4 @@ function clockString(ms) {
 }
 
 _quickTest().catch(console.error);
+	
